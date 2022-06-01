@@ -4,9 +4,6 @@ import Head from "next/head";
 
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
-const MONGO_CONNECT_STRING =
-  "mongodb+srv://washtakzo:Tekken7Tag2@cluster0.pnuaq0h.mongodb.net/meetups?retryWrites=true&w=majority";
-
 function MeetupDetails(props) {
   return (
     <Fragment>
@@ -25,7 +22,9 @@ function MeetupDetails(props) {
 }
 
 export async function getStaticPaths() {
-  const client = await MongoClient.connect(MONGO_CONNECT_STRING);
+  const client = await MongoClient.connect(
+    "mongodb+srv://maximilian:TU6WdZF2EjFWsqUt@cluster0.ntrwp.mongodb.net/meetups?retryWrites=true&w=majority"
+  );
   const db = client.db();
 
   const meetupsCollection = db.collection("meetups");
@@ -47,7 +46,9 @@ export async function getStaticProps(context) {
 
   const meetupId = context.params.meetupId;
 
-  const client = await MongoClient.connect(MONGO_CONNECT_STRING);
+  const client = await MongoClient.connect(
+    "mongodb+srv://maximilian:TU6WdZF2EjFWsqUt@cluster0.ntrwp.mongodb.net/meetups?retryWrites=true&w=majority"
+  );
   const db = client.db();
 
   const meetupsCollection = db.collection("meetups");
